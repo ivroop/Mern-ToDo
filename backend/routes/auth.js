@@ -1,2 +1,15 @@
 const router = require("express").Router();
-const User = require("..")
+const User = require("../models/user");
+
+router.post("/register", async (req, res) =>{
+    try {
+        const {email, username, password} = req.body;
+        const user = new User({email, username, password});
+        await user.save().then(() => {
+            res.status(200).json({ user: user});
+        })
+    }
+    catch(error) {}
+});
+
+module.exports = router;
