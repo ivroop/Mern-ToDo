@@ -9,7 +9,7 @@ router.post("/register", async (req, res) =>{
             res.status(200).json({ user: user});
         })
     }
-    catch(error) {}
+    catch(error) {res.status(400).json({ message: user });}
 });
 
 module.exports = router;
